@@ -1,6 +1,7 @@
 repoURL: "https://github.com/thisisbud/backend-chloe.git"
 path: "deploy/k8s"
 revision: 'v1.8.5'
+namespace: "default"
 
 parameters:
   deployment:

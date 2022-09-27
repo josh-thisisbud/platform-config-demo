@@ -7,16 +7,20 @@ metadata:
   namespace: argocd # The namespace argocd is installed in
 spec:
   generators:
-  - git:
-      repoURL: https://github.com/josh-thisisbud/platform-config-demo.git
-      revision: HEAD
-      directories:
-      - path: '/{{releaseStream}}/**/service.yaml'
-  - git:
-      repoURL: https://github.com/josh-thisisbud/platform-config-demo.git
-      revision: HEAD
-      directories:
-      - path: '/{{releaseStream}}/**/{{client}}/overrides.yaml'
+    - merge:
+        mergeKeys:
+          - '{{path[1]}}'
+        generators:
+          - git:
+              repoURL: "https://github.com/josh-thisisbud/platform-config-demo.git"
+              revision: main
+              directories:
+              - path: '/develop/**/service.yaml'
+          - git:
+              repoURL: "https://github.com/josh-thisisbud/platform-config-demo.git"
+              revision: main
+              directories:
+              - path: '/develop/**/{{client}}/overrides.yaml'
   template:
     metadata:
       name: '{{namespace}}-{{path[1]}}'

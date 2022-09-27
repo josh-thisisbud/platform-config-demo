@@ -1,4 +1,5 @@
 revision: 'v1.8.6'
+namespace: "schmud"
 
 parameters:
   deployment:

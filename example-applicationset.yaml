@@ -20,7 +20,7 @@ spec:
               repoURL: "https://github.com/josh-thisisbud/platform-config-demo.git"
               revision: main
               directories:
-              - path: '/develop/**/{{client}}/overrides.yaml'
+              - path: '/develop/**/aviva/overrides.yaml'
   template:
     metadata:
       name: '{{namespace}}-{{path[1]}}'

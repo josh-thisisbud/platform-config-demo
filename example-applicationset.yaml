@@ -9,7 +9,7 @@ spec:
   generators:
     - merge:
         mergeKeys:
-          - '{{path[1]}}'
+          - 'repoURL'
         generators:
           - git:
               repoURL: "https://github.com/josh-thisisbud/platform-config-demo.git"

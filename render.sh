@@ -3,10 +3,10 @@
 set -Eeuo pipefail
 trap cleanup SIGINT SIGTERM ERR EXIT
 
-script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
+# script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
 
 usage() {
-  cat << EOF # remove the space between << and EOF, this is due to web plugin issue
+  cat <<EOF # remove the space between << and EOF, this is due to web plugin issue
 Usage: $(basename "${BASH_SOURCE[0]}") [-h] [-v] [-f] -p param_value arg1 [arg2...]
 
 Script description here.
@@ -106,4 +106,5 @@ msg "- flag: ${flag}"
 msg "- arguments: ${args[*]-}"
 msg "-- rendered document below this line --"
 
-yq eval-all '. as $item ireduce ({}; . *n $item )' ${release_stream}/${team}/${service}/${client}/*.yaml ${release_stream}/${team}/${service}/*.yaml ${release_stream}/${team}/*.yaml ${release_stream}/*.yaml
+# shellcheck disable=SC2016
+yq eval-all '. as $item ireduce ({}; . *n $item )' "${release_stream}/${team}/${service}/${client}/*.yaml" "${release_stream}/${team}/${service}/*.yaml" "${release_stream}/${team}/*.yaml" "${release_stream}/*.yaml"  | yq -P 'sort_keys(..)'

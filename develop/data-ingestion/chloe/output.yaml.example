@@ -1,0 +1,13 @@
+namespace: default
+parameters:
+  cassandra:
+    speculative_execution_enabled: "true"
+  configmap:
+    customer_kms_client_timeout: 3s
+  deployment:
+    replicas: "2"
+path: deploy/k8s
+releaseStream: develop
+repoURL: https://github.com/thisisbud/backend-chloe.git
+revision: v1.8.5
+team: data-ingestion

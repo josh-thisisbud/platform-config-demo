@@ -1,0 +1,13 @@
+repoURL: "https://github.com/thisisbud/backend-chloe.git"
+path: "deploy/k8s"
+revision: 'v1.8.5'
+
+parameters:
+  deployment:
+    replicas: '2'
+
+  configmap:
+    customer_kms_client_timeout: '3s'
+
+  cassandra:
+    speculative_execution_enabled: 'true'

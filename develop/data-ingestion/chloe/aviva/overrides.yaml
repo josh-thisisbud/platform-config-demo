@@ -1,0 +1,5 @@
+revision: 'v1.8.6'
+
+parameters:
+  deployment:
+    replicas: '1'
